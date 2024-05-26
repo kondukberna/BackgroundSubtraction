@@ -7,8 +7,8 @@ using namespace cv;
 
 int main(int argc, char** argv) {
 
-    if (argc < 4) {
-      cout << "Usage: " << argv[0] << " -video_path <video_path> -folder_path <folder_path> -edge" << endl;
+    if (argc < 5) {
+      cout << "Usage: " << argv[0] << " -video_path <video_path> -folder_path <folder_path>" << endl;
       return -1;
     }
     char* videoPath = argv[2];
