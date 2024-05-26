@@ -25,10 +25,13 @@ If you want to try edge you have to add -edge flag.
 ## Result
 
 Frame
+
 ![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/Frame/258.jpg)
 
 Basic Foreground
+
 ![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG/258.jpg)
 
 Using Edge Foreground
+
 ![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG_Edge/258.jpg)
