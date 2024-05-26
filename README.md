@@ -26,12 +26,12 @@ If you want to try edge you have to add -edge flag.
 
 Frame
 
-![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/Frame/258.jpg)
+![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/Frame/233.jpg)
 
 Basic Foreground
 
-![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG/258.jpg)
+![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG/233.jpg)
 
 Using Edge Foreground
 
-![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG_Edge/258.jpg)
+![](https://github.com/kondukberna/BackgroundSubtraction/blob/main/folders/FG_Edge/233.jpg)
