@@ -16,11 +16,11 @@ make
 ## Run
 For basic foreground
 ```
-./bgsubtraction -image_path video/video03.avi -folder_path folders
+./bgsubtraction -image_path video/video03.avi -folder_path folders -threshold_value 50 
 ```
 If you want to try edge you have to add -edge flag.  
 ```
-./bgsubtraction -image_path video/video03.avi -folder_path folders -edge
+./bgsubtraction -image_path video/video03.avi -folder_path folders -threshold_value 50 -edge
 ```
 
 ## Result
