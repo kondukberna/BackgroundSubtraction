@@ -7,8 +7,8 @@ using namespace cv;
 
 int main(int argc, char** argv) {
 
-    if (argc < 5) {
-      cout << "Usage: " << argv[0] << " -video_path <video_path> -folder_path <folder_path>" << endl;
+    if (argc < 7) {
+      cout << "Usage: " << argv[0] << " -video_path <video_path> -folder_path <folder_path> -threshold_value <0-255> -edge" << endl;
       return -1;
     }
     char* videoPath = argv[2];
@@ -22,14 +22,16 @@ int main(int argc, char** argv) {
     char* folderPath = argv[4];
 
     bool edge = false;
-    if(argc > 5)
+    if(argc > 7)
     {
-      string edgeFlag = argv[5];
+      string edgeFlag = argv[7];
       if(edgeFlag == "-edge")
       {
         edge = true;
       }
     }
+
+    float thresholdValue = atof(argv[6]);
 
     BGSubtractor BG;
 
@@ -38,7 +40,7 @@ int main(int argc, char** argv) {
         Mat frame;
         cap >> frame;
 
-        BG.getBackground(frame, folderPath, edge);
+        BG.getBackground(frame, folderPath, edge, thresholdValue);
 
     }
 
