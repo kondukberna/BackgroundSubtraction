@@ -81,7 +81,7 @@ Mat BGSubtractor::applyPrewittEdge(Mat& frame) {
     return edgeImage;
 }
 
-Mat BGSubtractor::getForeground(Mat& frame) {
+Mat BGSubtractor::getForeground(Mat& frame, float thresholdValue) {
 
     Mat foreground;
     absdiff(frame, medianFrame, foreground);
@@ -90,18 +90,18 @@ Mat BGSubtractor::getForeground(Mat& frame) {
     cvtColor(foreground, grayForeground, COLOR_BGR2GRAY);
 
     Mat binaryForeground;
-    threshold(grayForeground, binaryForeground, 50, 255, THRESH_BINARY);
+    threshold(grayForeground, binaryForeground, thresholdValue, 255, THRESH_BINARY);
 
     return binaryForeground;
 }
 
-Mat BGSubtractor::applyMorphologicalOperations(Mat& FramePrewitt, Mat& BackgroundPrewitt)
+Mat BGSubtractor::applyMorphologicalOperations(Mat& FramePrewitt, Mat& BackgroundPrewitt, float thresholdValue)
 {
     Mat subtractionImage;
     subtract(FramePrewitt, BackgroundPrewitt, subtractionImage);
 
     Mat thresholdedImage;
-    threshold(subtractionImage, thresholdedImage, 50, 255, THRESH_BINARY);
+    threshold(subtractionImage, thresholdedImage, thresholdValue, 255, THRESH_BINARY);
 
 
     dilate(thresholdedImage, thresholdedImage, getStructuringElement(MORPH_RECT, Size(5, 5)));
@@ -134,7 +134,7 @@ Mat BGSubtractor::findCenter(Mat& thresholdedFrame, Mat& frame) {
     return resultImage;
 }
 
-void BGSubtractor::getBackground(Mat& frame, string FolderPath, bool FG) {
+void BGSubtractor::getBackground(Mat& frame, string FolderPath, bool FG, float thresholdValue) {
 
     counter++;
 
@@ -159,13 +159,13 @@ void BGSubtractor::getBackground(Mat& frame, string FolderPath, bool FG) {
     {
       Mat prewittFrame = applyPrewittEdge(frame);
       Mat prewittMedian = applyPrewittEdge(medianFrame);
-      Mat thresholdedImage = applyMorphologicalOperations(prewittFrame, prewittMedian);
+      Mat thresholdedImage = applyMorphologicalOperations(prewittFrame, prewittMedian, thresholdValue);
       Mat resultImage = findCenter(thresholdedImage, frame);
       imwrite(FolderPath + "/FG_Edge/" + to_string(counter) + ".jpg", thresholdedImage);
       imwrite(FolderPath + "/Result/" + to_string(counter) + ".jpg", resultImage);
     }
     else{
-      Mat foreground = getForeground(frame);
+      Mat foreground = getForeground(frame, thresholdValue);
       imwrite(FolderPath + "/FG/" + to_string(counter) + ".jpg", foreground);
     }
 
